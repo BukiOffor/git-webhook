@@ -21,7 +21,7 @@ cd $PROJECT_DIR
 git pull
 
 echo "[$(date)] Building..."
-cargo build --release
+cargo build -p root_server --release 
 
 echo "[$(date)] Copying binary..."
 cp target/release/$BINARY_NAME /opt/webhook/$BINARY_NAME
