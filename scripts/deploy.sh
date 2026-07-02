@@ -22,7 +22,7 @@ echo "[$(date)] Building..."
 cargo build --release
 
 echo "[$(date)] Copying binary..."
-cp target/release/$BINARY_NAME /opt/app/$BINARY_NAME
+cp target/release/$BINARY_NAME /opt/webhook/$BINARY_NAME
 
 echo "[$(date)] Starting service..."
 systemctl start $SERVICE_NAME
