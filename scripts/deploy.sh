@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+export PATH="$HOME/.cargo/bin:$PATH"
+
 PROJECT_DIR="/root/ils-development"
 SERVICE_NAME="root_server.service"
 BINARY_NAME="root_server"
