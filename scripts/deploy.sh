@@ -20,11 +20,14 @@ cd $PROJECT_DIR
 #git pull origin main
 git pull
 
+cd $PROJECT_DIR/root/client && npm install && npm run build
+cd $PROJECT_DIR
+
 echo "[$(date)] Building..."
 cargo build -p root_server --release 
 
 echo "[$(date)] Copying binary..."
-cp target/release/$BINARY_NAME /opt/webhook/$BINARY_NAME
+cp target/release/$BINARY_NAME /opt/gateway/$BINARY_NAME
 
 echo "[$(date)] Starting service..."
 systemctl start $SERVICE_NAME
