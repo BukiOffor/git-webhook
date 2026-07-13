@@ -14,6 +14,11 @@ pub async fn run_worker(mut rx: tokio::sync::mpsc::Receiver<()> ) {
 }
 
 async fn handle_deploy() -> Result<(), Box<dyn std::error::Error>> {
+    // Ensure the latest deploy script embedded in the binary is written before running
+    if let Err(e) = write_deploy_script() {
+        tracing::error!("Failed to write deploy script before spawn: {}", e);
+    }
+
     // Detach a child process that outlives this server
     let log = std::fs::OpenOptions::new()
         .create(true)
